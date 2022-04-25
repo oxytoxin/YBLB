@@ -1,0 +1,282 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    @*<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>*@
+     <script src="~/Content/Gijgo/js/jquery-3.3.1.min.js"></script>
+     <link href="~/Content/Gijgo/css/gijgo.min.css" rel="stylesheet" />
+     <script src="~/Content/Gijgo/js/gijgo.min.js"></script>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+    @* <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>*@
+
+    <!--Main Navigation-->
+    <header>
+        <!-- Sidebar -->
+        <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+            <div class="position-sticky">
+                <div class="list-group list-group-flush mx-3 mt-4">
+                    <a id="b-dashboard" href="#!" class="list-group-item list-group-item-action py-2 ripple" asp-area="" asp-controller="Home" asp-action="Index">
+                        <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
+                    </a>
+                    <a id="b-booking" href="#!" class="list-group-item list-group-item-action py-2 ripple" asp-area="" asp-controller="Booking" asp-action="booking">
+                        <i class="fas fa-solid fa-ticket fa-fw me-3"></i><span>Booking</span>
+                    </a>
+                    <a id="b-dispatch" href="#!" class="list-group-item list-group-item-action py-2 ripple" asp-area="" asp-controller="Dispatch" asp-action="Dispatch">
+                        <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dispatch</span>
+                    </a>
+                    <a id="b-components" href="#!" class="list-group-item list-group-item-action py-2 ripple" asp-area="" asp-controller="Components" asp-action="Components">
+                        <i class="fas fa-solid fa-gears fa-fw me-3"></i><span>Components</span>
+                    </a>
+                    <a id="b-usermanage" href="#!" class="list-group-item list-group-item-action py-2 ripple" asp-area="" asp-controller="Usermanagement" asp-action="UserManagement">
+                        <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>User Management</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <!-- Sidebar -->
+        <!-- Navbar -->
+        <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+            <!-- Container wrapper -->
+            <div class="container-fluid">
+                <!-- Toggle button -->
+                <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu"
+                        aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <!-- Brand -->
+                <a class="navbar-brand" href="#">
+                    <img src="~/Content/Img/YBLLogo.png" height="35" alt="" loading="lazy" />
+                    YBL Booking
+                </a>
+
+
+                <!-- Right links -->
+                <ul class="navbar-nav ms-auto d-flex flex-row">
+                    <!-- Notification dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link me-3 me-lg-0 " href="#" id="btn-qry-to-list"
+                           role="button">
+                            <i class="fas fa-bell"></i>
+                        </a>
+                    </li>
+
+
+                    <!-- Avatar -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#"
+                           id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                            <div class="userimg-container">
+                                <i class="fa-2x">
+                                    <img src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg" class="rounded-circle" height="22"
+                                         alt="" loading="lazy" />
+                                </i>
+                            </div>
+
+                            <small>&nbsp;<text id="userCname"></text></small>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#" id="btn-logout-form">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- Container wrapper -->
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <!--Main Navigation-->
+    <!--Main layout-->
+    <main style="margin-top: 58px">
+        <div class="container pt-4">
+            @RenderBody()
+        </div>
+    </main>
+    <!--Main layout-->
+    <!-- Modal -->
+    <div class="modal fade"
+         id="modal-qry-list"
+         data-mdb-backdrop="static"
+         data-mdb-keyboard="false"
+         tabindex="-1"
+         aria-labelledby="staticBackdropLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel"><i class="fa-solid fa-message"></i>&nbsp;Inquiries</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-3">
+                            <!-- Tab navs -->
+                            <div class="nav flex-column nav-pills text-center"
+                                 id="v-pills-tab"
+                                 role="tablist"
+                                 aria-orientation="vertical">
+                                <a class="nav-link active"
+                                   id="v-pills-home-tab"
+                                   data-mdb-toggle="pill"
+                                   href="#v-pills-home"
+                                   role="tab"
+                                   aria-controls="v-pills-home"
+                                   aria-selected="true">Inbox</a>
+                                <a class="nav-link"
+                                   id="v-pills-profile-tab"
+                                   data-mdb-toggle="pill"
+                                   href="#v-pills-profile"
+                                   role="tab"
+                                   aria-controls="v-pills-profile"
+                                   aria-selected="false">Archived</a>
+                      
+                            </div>
+                            <!-- Tab navs -->
+                        </div>
+
+                        <div class="col-9">
+                            <!-- Tab content -->
+                            <div class="tab-content" id="v-pills-tabContent">
+                                <div class="tab-pane fade show active"
+                                     id="v-pills-home"
+                                     role="tabpanel"
+                                     aria-labelledby="v-pills-home-tab">
+                                    <h4>Inbox</h4>
+
+                                    <div class="container">
+                                        <div class="inbox-container"></div>
+                                    </div>
+
+
+
+
+                                </div>
+                                <div class="tab-pane fade"
+                                     id="v-pills-profile"
+                                     role="tabpanel"
+                                     aria-labelledby="v-pills-profile-tab">
+                                    <h5>Archived Queries</h5>
+
+                                    <div class="mt-3">
+
+                                        <table id="tbl-archived" class="display" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Qry</th>
+                                                    <th>DateTime</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+
+                                        </table>
+
+
+                                    </div>
+
+                                </div>
+                                <div class="tab-pane fade"
+                                     id="v-pills-messages"
+                                     role="tabpanel"
+                                     aria-labelledby="v-pills-messages-tab">
+                                    Messages content
+                                </div>
+                            </div>
+                            <!-- Tab content -->
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade"
+         id="modal-inside-inbox"
+         data-mdb-backdrop="static"
+         data-mdb-keyboard="false"
+         tabindex="-1"
+         aria-labelledby="staticBackdropLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content" style="background-color:#e7e7e7;">
+                <div class="modal-header">
+                    <h5 class="modal-title inbox-uname" id="staticBackdropLabel"></h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="container">
+                        <div class="form-control bg-white text-wrap mb-3" style="width: 100%; color:black;"><text id="txt-qry"></text></div>
+                        <div class="form-control bg-white text-wrap inbox-qry-result" style="width: 100%; color:black;">
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+                <div class="modal-footer">
+
+                    <div class="container mb-2">
+
+                        <div class="form-outline">
+                            <textarea class="form-control txt-msg-to-qry-reply" id="txt-msg-to-qry-reply" rows="4"></textarea>
+                            <label class="form-label" for="textAreaExample">Message</label>
+                        </div>
+
+                    </div>
+
+                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+                    <button id="btn-reply-to-qry" type="button" class="btn btn-primary">Reply</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade"
+         id="logout-modal-confirmation"
+         data-mdb-backdrop="static"
+         data-mdb-keyboard="false"
+         tabindex="-1"
+         aria-labelledby="staticBackdropLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen-sm-down">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-center" style="padding-top:50%;">
+                        <div class="container mb-3">
+                            <h5><i class="fa-solid fa-circle-exclamation text-warning"></i> Are you sure you want to logout?</h5>
+                        </div>
+                        <button type="button" class="btn btn-outline-dark btn-rounded" data-mdb-ripple-color="dark" data-mdb-dismiss="modal">Close</button>
+                        <button id="f-logout-btn-to-lf" type="button" class="btn btn-outline-warning btn-rounded" data-mdb-ripple-color="dark">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

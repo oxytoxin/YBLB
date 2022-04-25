@@ -1,0 +1,29 @@
+﻿<form>
+    <input type="file" id="uploadfiles" />
+    <input type="button" id="but1" value="insert selected files" />
+
+</form>
+
+<script>
+    $(document).ready(function () {
+        $("#but1").on("Click", function () {
+            alert("Test");
+        //    var data = new FormData();
+        //    var files = $("#uploadfiles").get(0).files;
+        //    if (files.length > 0) {
+        //        data.append("Uploadfiles", files[0]);
+        //    }
+
+        //    $.ajax({
+        //        type: "POST",
+        //        url: "https://localhost:44315/api/upload/filesupload",
+        //        contentType: false,
+        //        processData: false,
+        //        data: data
+        //    }).then(function () {
+        //        alert("Sunccess");
+        //    });
+
+        //});
+    });
+</script>

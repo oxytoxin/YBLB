@@ -1,0 +1,313 @@
+﻿
+
+<h1>Booking</h1>
+
+<!-- Pills navs -->
+<ul class="nav nav-pills mb-3" id="ex1" role="tablist">
+    <li class="nav-item" role="presentation">
+        <a class="nav-link active"
+           id="ex1-tab-1"
+           data-mdb-toggle="pill"
+           href="#ex1-pills-1"
+           role="tab"
+           aria-controls="ex1-pills-1"
+           aria-selected="true">Walk-in</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link"
+           id="ex1-tab-2"
+           data-mdb-toggle="pill"
+           href="#ex1-pills-2"
+           role="tab"
+           aria-controls="ex1-pills-2"
+           aria-selected="false">Ticket</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link"
+           id="ex1-tab-3"
+           data-mdb-toggle="pill"
+           href="#ex1-pills-3"
+           role="tab"
+           aria-controls="ex1-pills-3"
+           aria-selected="false">Tab 3</a>
+    </li>
+</ul>
+<!-- Pills navs -->
+<!-- Pills content -->
+<div class="tab-content" id="ex1-content">
+    <div class="tab-pane fade show active"
+         id="ex1-pills-1"
+         role="tabpanel"
+         aria-labelledby="ex1-tab-1">
+
+
+        <div class="container mb-4">
+            <div class="row">
+                <div class="col">
+                    <small class="form-helper">Dispatch Date</small>
+                    <input id="datepicker2" width="100%" />
+                    <script>
+                        $('#datepicker2').datepicker();
+                    </script>
+                </div>
+                <div class="col">
+                    <small class="form-helper">Dispatch Time</small>
+                    <input id="timepicker2" width="100%" />
+                    <script>
+                        $('#timepicker2').timepicker();
+                    </script>
+                </div>
+                <div class="col">
+                    <small>Terminal</small>
+                    <select id="s_terminal" class="form-select" aria-label="Default select example" width="30%">
+                    </select>
+                </div>
+                <div class="col">
+                    <small>Destination Terminal</small>
+                    <select id="s_destination" class="form-select" aria-label="Default select example" width="30%">
+                    </select>
+                </div>
+                <div class="col">
+                    <small style="color:white;">.</small><br>
+                    <button id="btn_searchRoute" type="button" class="btn btn-primary">Route</button>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="container mt-3">
+            <table id="tbl_dispatchRoutes" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Route</th>
+                    </tr>
+                </thead>
+
+            </table>
+
+            <div class="modal fade"
+                 id="booking-modal"
+                 data-mdb-backdrop="static"
+                 data-mdb-keyboard="false"
+                 tabindex="-1"
+                 aria-labelledby="staticBackdropLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel"><i class="fa-solid fa-address-card"></i>&nbsp;Booking</h5>
+                            <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <p>Dispatch # : <b>YBLT-<text id="refNum"></text></b></p>
+                                    </div>
+                                    <div class="col">
+                                        <p>Fare Rate : <b>&#8369;<text id="regRate"></text></b></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <small>Terminal</small>
+                                        <select id="s_terminal2" class="form-select" aria-label="Default select example" width="30%">
+                                        </select>
+                                    </div>
+                                    <div class="col">
+                                        <small>Destination Terminal</small>
+                                        <select id="s_destination2" class="form-select" aria-label="Default select example" width="30%">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col">
+                                        <div class="form-outline">
+                                            <input type="text" id="i_passenger" class="form-control" />
+                                            <label class="form-label" for="form12">Passenger</label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-outline">
+                                            <input type="text" id="i_compartment" class="form-control" />
+                                            <label class="form-label" for="form12">Compartment</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="mt-3">
+                                        <div class="form-outline">
+                                            <textarea class="form-control" id="i_remarks" rows="4"></textarea>
+                                            <label class="form-label" for="textAreaExample">Remarks</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="btn_submit_booking" type="button" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+
+    </div>
+    <div class="tab-pane fade" id="ex1-pills-2" role="tabpanel" aria-labelledby="ex1-tab-2">
+        <div class="container">
+            <table id="tbl_tickets" class="table" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Ticket</th>
+                    </tr>
+                </thead>
+
+            </table>
+        </div>
+
+
+
+        <!-- Modal -->
+        <div class="modal fade"
+             id="paymodal"
+             data-mdb-backdrop="static"
+             data-mdb-keyboard="false"
+             tabindex="-1"
+             aria-labelledby="staticBackdropLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Pay &#38; Generate Ticket </h5>
+                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <h5>Payment type</h5>
+                                    <hr>
+                                    <form id="radios-btn">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="radioName" id="inlineRadio1" value="Walk-In" />
+                                            <label class="form-check-label" for="inlineRadio1">Walk-In</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="radioName" id="inlineRadio1" value="With Reference" />
+                                            <label class="form-check-label" for="inlineRadio1">With Reference</label>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col">
+                                    <h5>Amount</h5>
+                                    <h3>&#8369;&nbsp;<text id="total-to-pay"></text></h3>
+                                </div>
+                            </div>
+                            <div class="ticketing">
+                                <div class="row mt-4">
+                                    <div class="col">
+                                        <div class="qr-container"></div>
+                                    </div>
+                                    <div class="col">
+                                        <p>Name :&nbsp;<text id="ticket-name"></text></p>
+                                        <small><text id="ticket-terminal"></text></small><br />
+                                        <small>Distance :&nbsp;<text id="ticket-dist"></text></small><br />
+                                        <small>Type :&nbsp;<text id="ticket-type"></text></small><br />
+                                        <small>Seat :&nbsp;<text id="ticket-seat"></text></small><br />
+                                        <small>Comp :&nbsp;<text id="ticket-comp"></text></small><br />
+                                        <small>Amount :&#8369;&nbsp;<text id="ticket-amount"></text></small>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col"></div>
+                                <div class="col">
+                                    <button type="button" class="btn btn-outline-primary btn-print-tickets" data-mdb-ripple-color="dark"><i class="fa-solid fa-ticket-simple"></i> Print Ticket</button>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary btn-to-pre-pay">Pay</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- Modal -->
+        <div class="modal fade"
+             id="confirm-to-pay-modal"
+             data-mdb-backdrop="static"
+             data-mdb-keyboard="false"
+             tabindex="-1"
+             aria-labelledby="staticBackdropLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <p class="note note-warning">
+                            <i class="fa-solid fa-circle-exclamation" style="color:darkorange;"></i>
+                            <strong>Warning!</strong> Are you sure you want to procced this action?
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-warning" data-mdb-dismiss="modal">No</button>
+                        <button type="button" class="btn btn-success btn-proc-to-pay">Yes! Procced</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+    </div>
+    <div class="tab-pane fade" id="ex1-pills-3" role="tabpanel" aria-labelledby="ex1-tab-3">
+        Tab 3 content
+    </div>
+</div>
+<!-- Pills content -->
+
+
+
+<!-- Modal -->
+<div class="modal fade"
+     id="view-ref-modal"
+     data-mdb-backdrop="static"
+     data-mdb-keyboard="false"
+     tabindex="-1"
+     aria-labelledby="staticBackdropLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Ticket Reference</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>  
+            <div class="modal-body">
+                <h5 class="mt-2">Reference :&nbsp;<text id="ref-nums"></text></h5>
+                <hr>
+                <div class="container ref-img-container mt-3">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Understood</button>
+            </div>
+        </div>
+    </div>
+</div>

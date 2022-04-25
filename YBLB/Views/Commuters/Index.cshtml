@@ -1,0 +1,917 @@
+﻿@model YBLB.Models.Home.VerifyMO
+
+@{
+    Layout = null;
+}
+
+<script src="~/Content/Gijgo/js/jquery-3.3.1.min.js"></script>
+<link href="~/Content/Gijgo/css/gijgo.min.css" rel="stylesheet" />
+<script src="~/Content/Gijgo/js/gijgo.min.js"></script>
+
+<style>
+    .noselect {
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+    }
+</style>
+
+
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+
+<div class="container mb-5">
+
+    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+        <div class="container-fluid">
+            <!-- Brand -->
+            <a class="navbar-brand" href="#">
+                <img src="~/Content/Img/YBLLogo.png" height="35" alt="" loading="lazy" />
+                YBL Booking
+            </a>
+
+            <!-- Right links -->
+            <ul class="navbar-nav ms-auto d-flex flex-row">
+                <!-- Notification dropdown -->
+
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow" href="#" id="show-modal-notifs">
+                        <i class="fas fa-bell fa-lg"></i>
+                        
+                    </a>
+                </li>
+
+
+                <!-- Avatar -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#"
+                       id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                        <div class="userimg-container">
+                            <i class="fa-2x">
+                                <img src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg" class="rounded-circle" height="22"
+                                     alt="" loading="lazy" />
+                            </i>
+                        </div>
+
+                        <small>&nbsp;<text id="userCname"></text></small>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item btn-show-profiles" href="#">My profile</a></li>
+                        <li><a id="btn-logout-form" class="dropdown-item" href="#">Logout</a></li>
+                    </ul>
+                </li>
+
+
+            </ul>
+
+        </div>
+    </nav>
+
+</div>
+
+<div class="container mt-5 noselect" style="z-index:2;">
+
+    <div class="row">
+        <div class="fixed-top mt-5 bg-white" style="z-index:11;">
+            <ul class="nav nav-tabs nav-justified mb-3 mt-3" id="ex1" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active"
+                       id="ex3-tab-1"
+                       data-mdb-toggle="tab"
+                       href="#ex3-tabs-1"
+                       role="tab"
+                       aria-controls="ex3-tabs-1"
+                       aria-selected="true"><i class="fa-solid fa-bullhorn fa-lg"></i></a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link"
+                       id="ex3-tab-2"
+                       data-mdb-toggle="tab"
+                       href="#ex3-tabs-2"
+                       role="tab"
+                       aria-controls="ex3-tabs-2"
+                       aria-selected="false"><i class="fa-solid fa-bus fa-lg"></i></a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link"
+                       id="ex3-tab-3"
+                       data-mdb-toggle="tab"
+                       href="#ex3-tabs-3"
+                       role="tab"
+                       aria-controls="ex3-tabs-3"
+                       aria-selected="false"><i class="fa-solid fa-circle-question fa-lg"></i></a>
+                </li>
+
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link"
+                       id="t-ticketpanels"
+                       data-mdb-toggle="tab"
+                       href="#t-ticketpanel"
+                       role="tab"
+                       aria-controls="t-ticketpanel"
+                       aria-selected="false"><i class="fa-solid fa-folder"></i></a>
+                </li>
+            </ul>
+        </div>
+        <!-- Tabs navs -->
+        <!-- Tabs navs -->
+        <!-- Tabs content -->
+        <div class="mt-5"></div>
+        <div class="tab-content mt-5" id="ex2-content" style="z-index:1;">
+            <div class="tab-pane fade show active"
+                 id="ex3-tabs-1"
+                 role="tabpanel"
+                 aria-labelledby="ex3-tab-1">
+                <h4 class="mb-2"><b>Announcement</b></h4>
+                <div class="container">
+                    <div class="row">
+                        <div class="ann-container-commuters">
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="tab-pane fade"
+                 id="ex3-tabs-2"
+                 role="tabpanel"
+                 aria-labelledby="ex3-tab-2">
+                <div class="container">
+                    <div class="">
+                        <div class="row fixed-top mt-5 bg-white" style="padding-left:3%; padding-right:3%;">
+                            <div class="mt-5 mb-5">
+
+                            </div>
+                            <div class="col">
+                                <h4><b>Book</b></h4>
+                            </div>
+                            <div class="col">
+                                <div class="float-end">
+                                    <button id="modal-filter-route-btn" type="button" class="btn btn-sm btn-outline-primary btn-rounded" data-mdb-ripple-color="dark">
+                                        <i class="fa-solid fa-list"></i>
+                                        Filter
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="container mt-5">
+                    <div class="row card-container">
+
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="tab-pane fade"
+                 id="ex3-tabs-3"
+                 role="tabpanel"
+                 aria-labelledby="ex3-tab-3">
+                <h4 class="mb-3"><b>Infos</b></h4>
+
+                <div class="container">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Passenger Rules:</h5>
+                            <p class="card-text">1.	Please wait until other passengers have exited the bus before you board.</p>
+                            <p class="card-text">2.	Be careful when entering and exiting the bus, especially during inclement weather.</p>
+                            <p class="card-text">3.	Please leave the front seating for passengers who are elderly, have small children, or have a disability.</p>
+                            <p class="card-text">4.	Remain seated while the bus is in motion.</p>
+                            <p class="card-text">5.	Drinks are allowed in a container with a lid.</p>
+                            <p class="card-text">6.	No eating, smoking or drinking alcoholic beverages.</p>
+                            <p class="card-text">7.	Audio equipment may be used with headphones or earphones.</p>
+                            <p class="card-text">8.	No animals except service animals, or small animals that can be confined to a lap size carrier or kennel.</p>
+                            <p class="card-text">9.	Large items must be kept out of the aisles; aisles must be always clear.</p>
+                            <p class="card-text">10.Please have a destination in mind when riding. Passengers may not continuously ride one route.</p>
+                            <p class="card-text">11.Threatening or any other unacceptable behaviors including the use of vulgar language will result in your being asked to leave the bus.</p>
+                            <p class="card-text">12.For your safety, the following items are prohibited: Gasoline, car batteries, fireworks, explosive materials, firearms, or weapons of any kind.</p>
+                            <p class="card-text">13.Please refrain from unnecessary conversation with the driver while the bus is in motion.</p>
+                            <hr>
+                            <h5 class="card-title">PASSENGER CODE OF CONDUCT</h5>
+                            <small class="card-text">For the comfort and safety of all passengers, the following conduct is expected of all passengers using transit services.</small><br>
+                            <hr>
+                            <p class="card-text">• Cooperate with requests from transit personnel.</p>
+                            <p class="card-text">• Be considerate.</p>
+                            <p class="card-text">• Respect the privacy of others.</p>
+                            <small class="card-text">Refrain from any behavior that intrudes on the welfare of others including (but not limited to):</small><br>
+                            <hr>
+                            <p class="card-text">• Interfering with the safe operation of any transit vehicle.</p>
+                            <p class="card-text">• Harassing, intimidating, endangering, or threatening the welfare of others.</p>
+                            <p class="card-text">• Use of profanity or offensive language.</p>
+                            <p class="card-text">• Loud or disruptive behavior.</p>
+                            <p class="card-text">• Intentionally obstructing or impeding the flow of a transit vehicle or passenger movement.</p>
+                            <p class="card-text">• Placing your feet on seats or seat backs or lying down on the seats.</p>
+                            <p class="card-text">• Smoke or expel the residue of any tobacco product including vapor (e-cigarette, vaporizing electronic system, or otherwise) and chewing tobacco.</p>
+                            <p class="card-text">• Littering or spitting</p>
+                            <p class="card-text">• Consuming alcoholic beverages or possession of an open container of an alcoholic beverage.</p>
+                            <p class="card-text">• Drunk or disorderly conduct.</p>
+                            <p class="card-text">• Defacing, destroying, or otherwise vandalizing property, signs, and notices/announcements.</p>
+                            <p class="card-text">• Urinating or defecating except in restroom facility receptacles.</p>
+                            <p class="card-text">• Camping in or on transit property or storing personal property.</p>
+                            <p class="card-text">• Loitering without intent to utilize transit services.</p>
+                            <p class="card-text">• Bringing onto transit property, odors, and substances that unreasonably disturb others or interfere with their use of the transit system, whether such odors or substances are from one’s person, clothes, articles, accompanying animal, or any other source.</p>
+                            <small class="card-text">The code of conduct applies to all activities that occur in or on:</small><br>
+                            <hr>
+                            <p class="card-text">• Any transit vehicle or offices</p>
+                            <p class="card-text">• Transfer Centers</p>
+                            <p class="card-text">• Bus stops, shelters, or other passenger facilities</p>
+                            <p class="card-text">• Park & Ride lots</p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+
+
+
+            <div class="tab-pane fade"
+                 id="t-ticketpanel"
+                 role="tabpanel"
+                 aria-labelledby="ex3-tab-3">
+                <h4 class="mb-3"><b>Ticket</b></h4>
+
+                <div class="container">
+                    <div class="row ticket-comm-container1">
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+        </div>
+        <!-- Tabs content -->
+
+
+    </div>
+
+
+
+
+    <div class="modal fade"
+         id="filter-route-to-book-modal"
+         data-mdb-backdrop="static"
+         data-mdb-keyboard="false"
+         tabindex="-1"
+         aria-labelledby="staticBackdropLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel"><i class="fa-solid fa-route"></i>&nbsp;Route</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row mb-3">
+                            <div class="col">
+                                <small class="form-helper">Dispatch Date</small>
+                                <input id="datepicker-r" width="100%" />
+                                <script>
+                                    $('#datepicker-r').datepicker();
+                                </script>
+                            </div>
+                            <div class="col">
+                                <small class="form-helper">Dispatch Time</small>
+                                <input id="timepicker-r" width="100%" />
+                                <script>
+                                    $('#timepicker-r').timepicker();
+                                </script>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6 mb-3">
+                                <small>Terminal</small>
+                                <select id="s_terminal-com" class="form-select" aria-label="Default select example" width="30%">
+                                </select>
+                            </div>
+                            <div class="col-lg-6">
+                                <small>Destination Terminal</small>
+                                <select id="s_destination-com" class="form-select" aria-label="Default select example" width="30%">
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-mdb-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btn-filter-route-com">Filter</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade"
+         id="modal-details-routes-com"
+         data-mdb-backdrop="static"
+         data-mdb-keyboard="false"
+         tabindex="-1"
+         aria-labelledby="staticBackdropLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel"><i class="fa-solid fa-circle-exclamation"></i>&nbsp;Details <small style="font-size:10px;">YBLB-<text class="d_id"></text></small></h5>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <h4><b id="bus-id"></b></h4>
+                            <p><small id="t-sp"></small></p>
+                            <p><small id="t-ep"></small></p>
+                            <p><small id="t-date">Date: January 10 2022</small></p>
+                            <p><small id="t-time">Time: January 10 2022</small></p>
+                            <p><small id="t-seats">Available Seat(s): January 10 2022</small></p>
+                            <p><small id="t-comps">Available Comp(s): January 10 2022</small></p>
+                            <p><small id="t-class">Class: Aircondition-Free Wifi</small></p>
+                            <p><small id="t-stops">Stop(s): Non-Stop</small></p>
+
+                            <div class="bg-light mt-3">
+                                <text id="t-message"></text>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-mdb-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success btn-book-success"><i class="fa-solid fa-book"></i>&nbsp;Book</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade"
+         id="modal-to-booking"
+         data-mdb-backdrop="static"
+         data-mdb-keyboard="false"
+         tabindex="-1"
+         aria-labelledby="staticBackdropLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen-sm-down">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="staticBackdropLabel"><i class="fa-solid fa-book"></i>&nbsp;Book</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <small>Dispatch #:</small>
+                            <h3><b id="t-dispatch-id">YBLT-3</b></h3>
+
+                            <div class="mb-3 mt-3">
+                                <small>Terminal</small>
+                                <select id="s_terminal2" class="form-select" aria-label="Default select example" width="30%">
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <small>Destination Terminal</small>
+                                <select id="s_destination2" class="form-select" aria-label="Default select example" width="30%">
+                                </select>
+                            </div>
+
+                            <div class="form-outline mb-3">
+                                <input type="text" id="t-passenger-i" class="form-control" value="0" />
+                                <label class="form-label" for="form12">Passenger</label>
+                            </div>
+
+                            <div class="form-outline mb-3">
+                                <input type="text" id="t-comp-i" class="form-control" value="0" />
+                                <label class="form-label" for="form12">Compartment</label>
+                            </div>
+
+                            <div class="form-outline">
+                                <textarea class="form-control" id="t-remarks-i" rows="4"></textarea>
+                                <label class="form-label" for="textAreaExample">Remarks</label>
+                            </div>
+                        </div>
+                        <div class="mt-3 text-right">
+                            <h5><b>Terminal Fare :&nbsp;&#8369;<text id="fare-total-amount-c"></text></b></h5>
+                            <h5><b>Compartment Fare :&nbsp;&#8369;<text id="fare-total-comp-c"></text></b></h5>
+                        </div>
+                        <div class="mt-1 text-right">
+                            <small><b>Passenger Fare :&nbsp;&#8369;<text id="tf-pass"></text></b></small>
+                        </div>
+                        <div class="mt-1 text-right">
+                            <small><b>Compartment Fare :&nbsp;&#8369;<text id="tf-comp"></text></b></small>
+                        </div>
+                        <div class="mt-1 text-right">
+                            <small><b>Total Ammount :&nbsp;&#8369;<text id="tf-tamount"></text></b></small>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-mdb-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success btn-book-success-final">Book</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- INQUIRIES MODAL -->
+    <!-- Modal -->
+    <div class="modal fade"
+         id="iqr-modal"
+         data-mdb-backdrop="static"
+         data-mdb-keyboard="false"
+         tabindex="-1"
+         aria-labelledby="staticBackdropLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Inquiries</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-outline">
+                        <textarea class="form-control" id="textQry" rows="4"></textarea>
+                        <label class="form-label" for="textAreaExample">Queries <i class="fa-solid fa-circle-question"></i></label>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-mdb-dismiss="modal">Close</button>
+                    <button id="btn-submit-qry" type="button" class="btn btn-info">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    @using (Html.BeginForm("Index", "Commuters", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="modal fade"
+             id="verify-modal"
+             data-mdb-backdrop="static"
+             data-mdb-keyboard="false"
+             tabindex="-1"
+             aria-labelledby="staticBackdropLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-fullscreen-sm-down">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Submit Payment</h5>
+                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <div class="bkd-hide">
+                            @Html.TextBoxFor(model => Model.bookingID, new { @class = "form-control lead-bkid", @readonly = "true" })
+                        </div>
+                        <div class="form-outline">
+                            @Html.TextBoxFor(model => Model.REFERENCES, new { @class = "form-control lead-ref", @readonly = "true" })
+                        </div>
+
+                        <div class="form-outline mt-3">
+                            @Html.TextBoxFor(model => Model.PayREFERENCES, new { type = "text", @class = "form-control" })
+                            <label class="form-label" for="textAreaExample">Payment Reference #</label>
+                        </div>
+
+                        <div class="mt-3">
+                            <div class="container">
+                                @Html.TextBox("file", "", new { type = "file", @class = "form-control", onchange = "loadFile(event)" })
+                            </div>
+                        </div>
+
+                        <div class="mt-2">
+                            <img id="output" style='height: 50%; width: 100%; object-fit: contain' />
+                            <script>
+                                var loadFile = function (event) {
+                                    var output = document.getElementById('output');
+                                    output.src = URL.createObjectURL(event.target.files[0]);
+                                    output.onload = function () {
+                                        URL.revokeObjectURL(output.src);
+                                    }
+                                };
+
+                            </script>
+                        </div>
+
+
+
+                    </div>
+                    <div class="modal-footer">
+
+
+
+                        <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+                        <input id="sub" class="btn btn-primary" type="submit" value="Submit" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    }
+
+
+
+    <!-- Modal -->
+    <div class="modal fade"
+         id="logout-modal-confirmation"
+         data-mdb-backdrop="static"
+         data-mdb-keyboard="false"
+         tabindex="-1"
+         aria-labelledby="staticBackdropLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen-sm-down">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-center" style="padding-top:50%;">
+                        <div class="container mb-3">
+                            <h5><i class="fa-solid fa-circle-exclamation text-warning"></i> Are you sure you want to logout?</h5>
+                        </div>
+                        <button type="button" class="btn btn-outline-dark btn-rounded" data-mdb-ripple-color="dark" data-mdb-dismiss="modal">Close</button>
+                        <button id="f-logout-btn-to-lf" type="button" class="btn btn-outline-warning btn-rounded" data-mdb-ripple-color="dark">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade"
+         id="modal-gen-ticket-comm"
+         data-mdb-backdrop="static"
+         data-mdb-keyboard="false"
+         tabindex="-1"
+         aria-labelledby="staticBackdropLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen-sm-down">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel"></h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <center>
+                        <h5>#<text id="unitNum"></text></h5>
+                        <small id="datetimeDispatch"></small>
+                        <p id="cname"></p>
+                        <p>Seat : &nbsp;<text id="takeSeat"></text>&nbsp;Compartment : &nbsp;<text id="takeComp"></text></p>
+                        <div class="qr-container2">
+
+                        </div>
+                        <p></p>
+                        <small class="mt-5"><text id="destination"></text></small><br>
+                        <small class="mt-5"><text id="destinationDistance"></text>&nbsp;KM</small><br>
+
+                        <h5 class="mt-3">Take a Screenshot and present this to the Staff/Conductor.</h5>
+                    </center>
+
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade"
+         id="modal-notif-commuters"
+         data-mdb-backdrop="static"
+         data-mdb-keyboard="false"
+         tabindex="-1"
+         aria-labelledby="staticBackdropLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen-sm-down modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Inquiries</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container com-notif-containers">
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade"
+         id="modal-notif-inbox-commuters"
+         data-mdb-backdrop="static"
+         data-mdb-keyboard="false"
+         tabindex="-1"
+         aria-labelledby="staticBackdropLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen-sm-down modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Inbox</h5>
+                </div>
+                <div class="modal-body">
+
+                    <div class="container">
+                        <div class="form-control bg-white text-wrap mb-3" style="width: 100%; color:black;"><text id="txt-qry2"></text></div>
+                        <div class="form-control bg-white text-wrap inbox-qry-result" style="width: 100%; color:black;">
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+
+                    <div class="container mb-2">
+
+                        <div class="form-outline">
+                            <textarea class="form-control txt-msg-to-qry-reply" id="txt-msg-to-qry-reply" rows="4"></textarea>
+                            <label class="form-label" for="textAreaExample">Message</label>
+                        </div>
+
+                    </div>
+
+
+
+                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" id="btn-reply-to-qry">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade"
+         id="modal-update-users"
+         data-mdb-backdrop="static"
+         data-mdb-keyboard="false"
+         tabindex="-1"
+         aria-labelledby="staticBackdropLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Update Users</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="container">
+                        <!-- Tabs navs -->
+                        <ul class="nav nav-tabs nav-justified mb-3" id="ex1" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active"
+                                   id="ex3-tab-1s"
+                                   data-mdb-toggle="tab"
+                                   href="#ex3-tabs-1ss"
+                                   role="tab"
+                                   aria-controls="ex3-tabs-1"
+                                   aria-selected="true">Profile</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link"
+                                   id="ex3-tab-2s"
+                                   data-mdb-toggle="tab"
+                                   href="#ex3-tabs-2ss"
+                                   role="tab"
+                                   aria-controls="ex3-tabs-2"
+                                   aria-selected="false">Details</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link"
+                                   id="ex3-tab-3s"
+                                   data-mdb-toggle="tab"
+                                   href="#ex3-tabs-3ss"
+                                   role="tab"
+                                   aria-controls="ex3-tabs-3"
+                                   aria-selected="false">Credentials</a>
+                            </li>
+                        </ul>
+                        <!-- Tabs navs -->
+                        <!-- Tabs content -->
+                        <div class="tab-content" id="ex2-content">
+                            <div class="tab-pane fade show active"
+                                 id="ex3-tabs-1ss"
+                                 role="tabpanel"
+                                 aria-labelledby="ex3-tab-1">
+                               
+                                @using (Html.BeginForm("UpdateDP", "Commuters", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                {
+                                    <div>
+                                        <div style="display: none;">
+                                            @Html.TextBoxFor(model => Model.I_USERID)
+                                        </div>
+                                        <center class="mb-3">
+                                            <div>
+                                                <img id="output2" class="img-thumbnail rounded-circle" style="max-width:300px; max-height:300px;" />
+                                            </div>
+                                        </center>
+
+
+
+                                        @Html.TextBox("file", "", new { type = "file", @class = "form-control", onchange = "loadFiles(event)" })
+                                        @*  <input type="file" accept="image/*" onchange="loadFile(event)" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Attache Img" />*@
+                                        <script>
+                                            var loadFiles = function (event) {
+
+                                                $('#but13').removeClass('disabled');
+
+                                                var output = document.getElementById('output2');
+                                                output.src = URL.createObjectURL(event.target.files[0]);
+                                                output.onload = function () {
+                                                    URL.revokeObjectURL(output.src);
+                                                }
+                                            };
+                                        </script>
+                                        <center class="mt-3">
+                                            <input id="but13" class="btn btn-primary disabled" type="submit" value="Update DP" />
+                                        </center>
+
+                                    </div>
+                                }
+                            </div>
+                            <div class="tab-pane fade"
+                                 id="ex3-tabs-2ss"
+                                 role="tabpanel"
+                                 aria-labelledby="ex3-tab-2">
+                               
+
+                                <div class="mt-2">
+                                    <div class="form-outline mb-3">
+                                        <input type="text" id="pName" class="form-control" disabled />
+                                        <label class="form-label" for="pName">Name</label>
+                                    </div>
+
+                                    <div class="form-outline mb-3">
+                                        <input type="text" id="pGender" class="form-control" disabled />
+                                        <label class="form-label" for="pGender">Gender</label>
+                                    </div>
+
+                                    <div class="form-outline mb-3">
+                                        <input type="text" id="pBd" class="form-control" disabled />
+                                        <label class="form-label" for="pBd">Birth Date</label>
+                                    </div>
+
+                                    <div class="form-outline mb-3">
+                                        <input type="text" id="pAddress" class="form-control" />
+                                        <label class="form-label" for="pAddress">Address</label>
+                                    </div>
+
+                                    <div class="form-outline mb-3">
+                                        <input type="text" id="pEmail" class="form-control" />
+                                        <label class="form-label" for="pEmail">Email</label>
+                                    </div>
+
+                                    <div class="form-outline mb-3">
+                                        <input type="text" id="pUsername" class="form-control" />
+                                        <label class="form-label" for="pUsername">Username</label>
+                                    </div>
+                                </div>
+
+                                <div class="mt-3">
+                                    <button id="btn-update-userdetails" type="button" class="btn btn-success float-end">Submit</button>
+                                </div>
+
+                            </div>
+                            <div class="tab-pane fade"
+                                 id="ex3-tabs-3ss"
+                                 role="tabpanel"
+                                 aria-labelledby="ex3-tab-3">
+                                <h5>User Credentials</h5>
+                                <div class="form-outline mb-3">
+                                    <input type="password" id="passbase" class="form-control form-control-sm" />
+                                    <label class="form-label" for="form12">Password</label>
+                                </div>
+
+                                <div class="form-outline mb-3 conpass">
+                                    <input type="password" id="passConfirmBase" class="form-control form-control-sm" />
+                                    <label class="form-label" for="form12">Confirm Password</label>
+                                </div>
+                                <script>
+
+                                    var _passWordBase = "";
+                                    var _passWordConfirm = "";
+
+
+                                    $('#passbase').keyup((e) => {
+                                        _passWordBase = e.currentTarget.value;
+                                        if (_passWordBase === _passWordConfirm) {
+                                            $("#ic-txt").remove();
+                                            $('.conpass').append(`<i id="ic-txt" class="fa-solid fa-circle-check trailing text-success"></i>`);
+                                            $("#btn-update-creds").removeClass("disabled");
+                                            _passWord = e.currentTarget.value;
+                                            _isValidpassWord = true;
+                                        }
+                                        if (e.currentTarget.value !== _passWordConfirm) {
+                                            $("#ic-txt").remove();
+                                            $('.conpass').append(`<i id="ic-txt" class="fa-solid fa-circle-xmark trailing text-danger"></i>`);
+                                            $('#btn-update-creds').addClass('disabled');
+                                        }
+
+                                    });
+
+                                    $('#passbase').keydown((e) => {
+                                        _passWordBase = e.currentTarget.value;
+                                        if (_passWordBase === _passWordConfirm) {
+                                            $("#ic-txt").remove();
+                                            $('.conpass').append(`<i id="ic-txt" class="fa-solid fa-circle-check trailing text-success"></i>`);
+                                            $("#btn-update-creds").removeClass("disabled");
+                                            _passWord = e.currentTarget.value;
+                                            _isValidpassWord = true;
+                                        }
+                                        if (e.currentTarget.value !== _passWordConfirm) {
+                                            $("#ic-txt").remove();
+                                            $('.conpass').append(`<i id="ic-txt" class="fa-solid fa-circle-xmark trailing text-danger"></i>`);
+                                            $('#btn-update-creds').addClass('disabled');
+                                        }
+                                    });
+
+
+
+                                    $('#passConfirmBase').keyup((e) => {
+                                        _passWordConfirm = e.currentTarget.value;
+                                        if (_passWordBase === _passWordConfirm) {
+                                            $("#ic-txt").remove();
+                                            $('.conpass').append(`<i id="ic-txt" class="fa-solid fa-circle-check trailing text-success"></i>`);
+                                            $("#btn-update-creds").removeClass("disabled");
+                                            _passWord = e.currentTarget.value;
+                                            _isValidpassWord = true;
+                                        }
+                                        if (_passWordBase !== e.currentTarget.value) {
+                                            $("#ic-txt").remove();
+                                            $('.conpass').append(`<i id="ic-txt" class="fa-solid fa-circle-xmark trailing text-danger"></i>`);
+                                            $('#btn-update-creds').addClass('disabled');
+                                        }
+                                    });
+
+                                    $('#passConfirmBase').keydown((e) => {
+                                        _passWordConfirm = e.currentTarget.value;
+                                        if (_passWordBase === _passWordConfirm) {
+                                            $("#ic-txt").remove();
+                                            $('.conpass').append(`<i id="ic-txt" class="fa-solid fa-circle-check trailing text-success"></i>`);
+                                            $("#btn-update-creds").removeClass("disabled");
+                                            _passWord = e.currentTarget.value;
+                                            _isValidpassWord = true;
+                                        }
+                                        if (_passWordBase !== e.currentTarget.value) {
+                                            $("#ic-txt").remove();
+                                            $('.conpass').append(`<i id="ic-txt" class="fa-solid fa-circle-xmark trailing text-danger"></i>`);
+                                            $('#btn-update-creds').addClass('disabled');
+                                        }
+                                    });
+                                </script>
+                                <div class="mt-3">
+                                    <button id="btn-update-creds" type="button" class="btn btn-success float-end">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Tabs content -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+</div>  <!-- No SELECT -->
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")

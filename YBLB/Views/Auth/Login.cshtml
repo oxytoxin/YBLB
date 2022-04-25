@@ -1,0 +1,83 @@
+﻿
+
+@{
+    Layout = null;
+}
+
+
+<style type="text/css">
+    .divider:after,
+    .divider:before {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: #eee;
+    }
+
+    .noselect {
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+    }
+</style>
+
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+
+
+
+
+
+<center>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-lg-6">
+                <img src="~/Content/Img/yblcover.jpg" style="max-width:100%;"/>
+            </div>
+            <div class="col-lg-6">
+
+                <div class="card mt-3">
+                    <div class="card-body">
+
+                        <h5><img src="~/Content/Img/YBLLogo.png" style="height:45px;" /> Yellow Bus Line Inc.</h5>
+
+                        <div class="form-outline mt-3">
+                            <input type="text" id="u_name_txt" class="form-control" />
+                            <label class="form-label" for="form12">Username</label>
+                        </div>
+
+                        <div class="form-outline mt-3">
+                            <input type="password" id="u_pass_txt" class="form-control" />
+                            <label class="form-label" for="form12">Password</label>
+                        </div>
+
+                        <div class="mt-3">
+                            <button id="testbtn" type="button" class="btn btn-primary" style="width:100%;">Sign in</button>
+                        </div>
+
+                        <div class="mt-3">
+                            <button id="btn-proc-reguser" type="button" class="btn btn-primary" style="width:100%;">Register</button>
+                        </div>
+
+                    </div>
+                </div>
+
+                
+
+            </div>
+        </div>
+    </div>
+</center>
+
+
+
+
+
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")

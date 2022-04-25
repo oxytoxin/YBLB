@@ -1,0 +1,190 @@
+﻿@*@{
+        Layout = null;
+    }*@
+
+<h1>User Management</h1>
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#staticBackdrop">
+    Add Users
+</button>
+
+<!-- Modal -->
+<div class="modal fade"
+     id="staticBackdrop"
+     data-mdb-backdrop="static"
+     data-mdb-keyboard="false"
+     tabindex="-1"
+     aria-labelledby="staticBackdropLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-4 mb-3">
+                            @*<img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp"
+                                 class="img-thumbnail"
+                                 alt="Hollywood Sign on The Hill" />*@
+                            @*style='height: 100%; width: 100%; object-fit: contain'*@
+                            <img id="output" class="img-thumbnail" />
+
+                        </div>
+                        <div class="col">
+                            <div class="form-outline mb-3">
+                                <i class="fas fa-exclamation-circle trailing"></i>
+                                <input type="text" id="form1" class="form-control form-icon-trailing" />
+                                <label class="form-label" for="form1">Example label</label>
+                            </div>
+                            <div class="form-outline mb-3">
+                                <input type="text" id="form12" class="form-control" />
+                                <label class="form-label" for="form12">Address</label>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <input type="file" accept="image/*" onchange="loadFile(event)" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Attache Img" />
+                                <script>
+                                    var loadFile = function (event) {
+                                        var output = document.getElementById('output');
+                                        output.src = URL.createObjectURL(event.target.files[0]);
+                                        output.onload = function () {
+                                            URL.revokeObjectURL(output.src);
+                                        }
+                                    };
+                                </script>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="mb-3">
+                                <small>Gender</small>
+                                <select id="" class="form-select" aria-label="Default select example" width="30%">
+                                    <option> Male </option>
+                                    <option> Female </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="mb-3">
+                                <small class="form-helper">Birth Date</small>
+                                <input id="datepicker2" class="form-control" width="100%" />
+                                <script>
+                                    $('#datepicker2').datepicker();
+                                    $("#datepicker2").next(".gj-icon").css("margin-top", "5px");
+                                    $("#datepicker2").next(".gj-icon").css("margin-right", "5px");
+                                </script>
+                            </div>
+                            
+                        </div>
+                        <div class="col-lg-4">
+                            <div style="margin-top:23px;">
+                                <div class="form-outline mb-3">
+                                    <input type="email" id="typeEmail" class="form-control" />
+                                    <label class="form-label" for="typeEmail">Email Address</label>
+                                </div>
+                            </div>
+                          
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="form-outline mb-3">
+                                <i class="fas fa-exclamation-circle trailing"></i>
+                                <input type="text" id="form1" class="form-control form-icon-trailing" />
+                                <label class="form-label" for="form1">Username</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-outline mb-3">
+                                <i class="fas fa-exclamation-circle trailing"></i>
+                                <input type="password" id="pass" class="form-control form-icon-trailing" />
+                                <label class="form-label" for="form1">Password</label>
+                            </div>
+                            <div id="textExample1" class="form-text">
+                                <small>We'll never share your password with anyone else.</small>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div id="passContainer" class="form-outline mb-3">
+                                
+                                <input type="password" id="cpass" class="form-control form-icon-trailing" />
+                                <label class="form-label" for="form1">Confirm Password</label>
+                                <script>
+                                    $("#pass").focus(function () {
+                                        if ($("#pass").val().length > 0) {
+                                            $("#cpass").val('');
+                                            $("#pass").val('');
+                                            $("#cic").remove();
+                                            $("#cic").remove();
+                                        }
+                                        if ($("#pass").val() !== '') {
+                                            if ($("#cpass").val() === $("#pass").val() && $("#pass").val().length === 0) {
+                                                $('#passContainer').prepend('<i id="cic" class="fa-solid fa-circle-check trailing text-success"></i>');
+                                            }
+                                            else {
+                                                $("#cic").remove();
+                                            }
+                                        }
+                                    
+                                    });
+
+                                    $("#cpass").keyup(function () {
+                                        if ($("#cpass").val() === $("#pass").val()) {
+                                            $('#passContainer').prepend('<i id="cic" class="fa-solid fa-circle-check trailing text-success"></i>');
+                                        }
+                                        else {
+                                            $("#cic").remove();
+                                        }
+                                    });
+                                    $("#cpass").onchange(function () {
+                                        if ($("#cpass").val() === $("#pass").val()) {
+                                            $('#passContainer').prepend('<i id="cic" class="fa-solid fa-circle-check trailing text-success"></i>');
+                                           
+                                        }
+                                        else {
+                                            $("#cic").remove();
+                                        }
+                                    });
+
+                                </script>
+                            </div>
+                           
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="mb-3">
+                                    <small>User-Level</small>
+                                    <select id="" class="form-select" aria-label="Default select example" width="30%">
+                                        <option> Conductor </option>
+                                        <option> Passenger </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <small>Terms and Conditions</small>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label class="form-check-label" for="flexCheckDefault">I have read and agree to the Privacy Policy</label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Register</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    @*<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>*@
+     <script src="~/Content/Gijgo/js/jquery-3.3.1.min.js"></script>
+     <link href="~/Content/Gijgo/css/gijgo.min.css" rel="stylesheet" />
+     <script src="~/Content/Gijgo/js/gijgo.min.js"></script>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+    @* <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>*@
+
+    <!--Main Navigation-->
+    <header>
+        <!-- Sidebar -->
+        <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+            <div class="position-sticky">
+                <div class="list-group list-group-flush mx-3 mt-4">
+                    <a id="b-dashboard" class="list-group-item list-group-item-action py-2 ripple" asp-area="" asp-controller="Home" asp-action="Index">
+                        <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
+                    </a>
+                    <a id="b-booking" class="list-group-item list-group-item-action py-2 ripple" asp-area="" asp-controller="Booking" asp-action="booking">
+                        <i class="fas fa-solid fa-ticket fa-fw me-3"></i><span>Booking</span>
+                    </a>
+                    <a id="b-dispatch" class="list-group-item list-group-item-action py-2 ripple" asp-area="" asp-controller="Dispatch" asp-action="Dispatch">
+                        <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dispatch</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action py-2 ripple" asp-area="">
+                        <i class="fas fa-solid fa-toolbox fa-fw me-3"></i><span>Template</span>
+                    </a>
+                    <a id="b-components" class="list-group-item list-group-item-action py-2 ripple" asp-area="" asp-controller="Components" asp-action="Components">
+                        <i class="fas fa-solid fa-gears fa-fw me-3"></i><span>Components</span>
+                    </a>
+                    <a id="b-usermanage" class="list-group-item list-group-item-action py-2 ripple" asp-area="" asp-controller="Usermanagement" asp-action="UserManagement">
+                        <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>User Management</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <!-- Sidebar -->
+        <!-- Navbar -->
+        <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+            <!-- Container wrapper -->
+            <div class="container-fluid">
+                <!-- Toggle button -->
+                <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu"
+                        aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <!-- Brand -->
+                <a class="navbar-brand" href="#">
+                    <img src="~/Content/Img/YBLLogo.png" height="35" alt="" loading="lazy" />
+                    YBL Booking
+                </a>
+
+
+                <!-- Right links -->
+                <ul class="navbar-nav ms-auto d-flex flex-row">
+                    <!-- Notification dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
+                           role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-bell"></i>
+                            <span class="badge rounded-pill badge-notification bg-danger">1</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Some news</a></li>
+                            <li><a class="dropdown-item" href="#">Another news</a></li>
+                            <li>
+                                <a class="dropdown-item" href="#">Something else</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                
+                    <!-- Avatar -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#"
+                           id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                            <img src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg" class="rounded-circle" height="22"
+                                 alt="" loading="lazy" />
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">My profile</a></li>
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- Container wrapper -->
+        </nav>
+        <!-- Navbar -->
+    </header>
+    <!--Main Navigation-->
+    <!--Main layout-->
+    <main style="margin-top: 58px">
+        <div class="container pt-4">
+            @RenderBody()
+        </div>
+    </main>
+    <!--Main layout-->
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

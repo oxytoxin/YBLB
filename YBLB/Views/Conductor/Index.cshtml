@@ -1,0 +1,302 @@
+﻿@model YBLB.Models.Home.VerifyMO
+
+@{
+    Layout = null;
+}
+
+<script src="~/Content/Gijgo/js/jquery-3.3.1.min.js"></script>
+<link href="~/Content/Gijgo/css/gijgo.min.css" rel="stylesheet" />
+<script src="~/Content/Gijgo/js/gijgo.min.js"></script>
+
+<style>
+    .noselect {
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+    }
+</style>
+
+
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+
+<div class="container mb-5">
+
+    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+        <div class="container-fluid">
+            <!-- Brand -->
+            <a class="navbar-brand" href="#">
+                <img src="~/Content/Img/YBLLogo.png" height="35" alt="" loading="lazy" />
+                YBL Booking
+            </a>
+
+            <!-- Right links -->
+            <ul class="navbar-nav ms-auto d-flex flex-row">
+                <!-- Notification dropdown -->
+
+
+     
+
+
+                <!-- Avatar -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#"
+                       id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-2x">
+                            <img src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg" class="rounded-circle" height="22"
+                                 alt="" loading="lazy" />
+                        </i>
+                        <small>&nbsp;<text id="userCname"></text></small>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a id="btn-lg-forms" class="dropdown-item" href="#">Logout</a></li>
+                    </ul>
+                </li>
+
+
+            </ul>
+
+        </div>
+    </nav>
+
+</div>
+
+<div class="container mt-5 noselect" style="z-index:2;">
+
+    <div class="row">
+        <div class="fixed-top mt-5 bg-white" style="z-index:11;">
+            <ul class="nav nav-tabs nav-justified mb-3 mt-3" id="ex1" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active"
+                       id="ex3-tab-1"
+                       data-mdb-toggle="tab"
+                       href="#ex3-tabs-1"
+                       role="tab"
+                       aria-controls="ex3-tabs-1"
+                       aria-selected="true"><i class="fa-solid fa-bullhorn fa-lg"></i></a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link"
+                       id="ex3-tab-2"
+                       data-mdb-toggle="tab"
+                       href="#ex3-tabs-2"
+                       role="tab"
+                       aria-controls="ex3-tabs-2"
+                       aria-selected="false"><i class="fa-solid fa-camera"></i></a>
+                </li>
+
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link"
+                       id="t-ticketpanels"
+                       data-mdb-toggle="tab"
+                       href="#t-ticketpanel"
+                       role="tab"
+                       aria-controls="t-ticketpanel"
+                       aria-selected="false"><i class="fa-solid fa-folder"></i></a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="mt-5"></div>
+        <div class="tab-content mt-5" id="ex2-content" style="z-index:1;">
+            <div class="tab-pane fade show active"
+                 id="ex3-tabs-1"
+                 role="tabpanel"
+                 aria-labelledby="ex3-tab-1">
+                <h4 class="mb-2"><b>Announcement</b></h4>
+                <div class="container">
+                    <div class="row">
+                        <div class="ann-container-commuters2">
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="tab-pane fade"
+                 id="ex3-tabs-2"
+                 role="tabpanel"
+                 aria-labelledby="ex3-tab-2">
+                <script src=></script>
+                <div class="container lid">
+                    <div style="width:100%;" id="reader"></div>
+                    <div class="row">
+                        <style>
+                            #reader__dashboard_section_csr p {
+                                background-color: yellow;
+                            }
+
+
+                            #reader__camera_selection, .form-control {
+                                display: block;
+                                width: 100%;
+                                height: 34px;
+                                padding: 6px 12px;
+                                font-size: 14px;
+                                line-height: 1.42857143;
+                                color: #555555;
+                                background-color: #fff;
+                                background-image: none;
+                                border: 1px solid #ccc;
+                                border-radius: 4px;
+                                -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+                                box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+                                -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+                                -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+                                -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+                                transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+                                transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+                                transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+                            }
+                        </style>
+                        <div class="col" style="padding:30px;">
+                            <h5>Ticket Scanned Result</h5>
+                            <center style="padding:30px;">
+                                Recent Scan.
+                                <div id="result"></div>
+                            </center>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
+
+
+            </div>
+
+
+
+            <div class="tab-pane fade"
+                 id="t-ticketpanel"
+                 role="tabpanel"
+                 aria-labelledby="ex3-tab-3">
+                <h4 class="mb-3"><b>Ticket</b></h4>
+
+                <select class="form-control opt-sel">
+                </select>
+                <div class="container mt-3 ">
+                    <div class="appender-error">
+                    </div>
+                    <table id="tbl-tck" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                    </table>
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+
+
+
+        </div>
+        <!-- Tabs content -->
+
+
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade"
+         id="modal-on-success-scan"
+         data-mdb-backdrop="static"
+         data-mdb-keyboard="false"
+         tabindex="-1"
+         aria-labelledby="staticBackdropLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen-sm-down">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <center style="padding:30px;">
+                        <div class="res-container">
+
+                        </div>
+                    </center>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-mdb-dismiss="modal">Close</button>
+                    <div class="btn-containers"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade"
+         id="logout-modal-confirmation"
+         data-mdb-backdrop="static"
+         data-mdb-keyboard="false"
+         tabindex="-1"
+         aria-labelledby="staticBackdropLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen-sm-down">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-center" style="padding-top:50%;">
+                        <div class="container mb-3">
+                            <h5><i class="fa-solid fa-circle-exclamation text-warning"></i> Are you sure you want to logout?</h5>
+                        </div>
+                        <button type="button" class="btn btn-outline-dark btn-rounded" data-mdb-ripple-color="dark" data-mdb-dismiss="modal">Close</button>
+                        <button id="f-logout-btn-to-lf2" type="button" class="btn btn-outline-warning btn-rounded" data-mdb-ripple-color="dark">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- INQUIRIES MODAL -->
+    <!-- Modal -->
+    <div class="modal fade"
+         id="iqr-modal2"
+         data-mdb-backdrop="static"
+         data-mdb-keyboard="false"
+         tabindex="-1"
+         aria-labelledby="staticBackdropLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Inquiries</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-outline">
+                        <textarea class="form-control" id="textQry" rows="4"></textarea>
+                        <label class="form-label" for="textAreaExample">Queries <i class="fa-solid fa-circle-question"></i></label>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-mdb-dismiss="modal">Close</button>
+                    <button id="btn-submit-qry" type="button" class="btn btn-info">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>  <!-- No SELECT -->
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")

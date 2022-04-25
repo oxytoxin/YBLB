@@ -1,0 +1,146 @@
+﻿
+
+
+<h1>Dispatch</h1>
+<div class="mt-2 mb-3">
+    <button type="button" class="btn btn-secondary" data-mdb-toggle="modal" data-mdb-target="#staticBackdrop">Schedule Dispatch</button>
+
+</div>
+
+<table id="tbl_dispatch_view" class="table table-borderless" style="width:100%">
+    
+    <thead>
+        <tr>
+            <th><small>Dispatch Schedule</small></th>
+
+        </tr>
+    </thead>
+
+</table>
+
+<!-- Modal -->
+<div class="modal fade"
+     id="staticBackdrop"
+     data-mdb-backdrop="static"
+     data-mdb-keyboard="false"
+     tabindex="-1"
+     aria-labelledby="staticBackdropLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Schedule Dispatch</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row mb-3">
+                        <div class="col">
+                            <small class="form-helper">Dispatch Date</small>
+                            <input id="datepicker" width="100%" />
+                            <script>
+                                $('#datepicker').datepicker();
+                            </script>
+                        </div>
+                        <div class="col">
+                            <small class="form-helper">Dispatch Time</small>
+                            <input id="timepicker" width="100%" />
+                            <script>
+                                $('#timepicker').timepicker();
+                            </script>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            <small>Unit #</small>
+                            <select id="s_ubus" class="form-select" aria-label="Default select example" width="30%">
+                            </select>
+                        </div>
+                        <div class="col">
+                            <small>Bus Class</small>
+                            <select id="s_busclass" class="form-select" aria-label="Default select example" width="30%">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <small>Start Point</small>
+                            <select id="s_startpoint2" class="form-select" aria-label="Default select example" width="30%">
+                            </select>
+                        </div>
+                        <div class="col">
+                            <small>End Point</small>
+                            <select id="s_endpoint2" class="form-select" aria-label="Default select example" width="30%">
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            <div class="mb-3">
+                                <small>No. of Terminal Stops &nbsp;<i class="fa-solid fa-shop"></i></small>
+                            </div>
+
+                            <form id="myForm">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="radioName" id="inlineRadio1" value="Regular" />
+                                    <label class="form-check-label" for="inlineRadio1">Regular</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="radioName" id="inlineRadio1" value="Non-Stop" />
+                                    <label class="form-check-label" for="inlineRadio1">Non-Stop</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="radioName" id="inlineRadio1" value="1" />
+                                    <label class="form-check-label" for="inlineRadio1">1</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="radioName" id="inlineRadio1" value="2" />
+                                    <label class="form-check-label" for="inlineRadio1">2</label>
+                                </div>
+                            </form>
+                            @*<script>
+
+                                </script>*@
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row mb-3">
+                        <div class="col">
+
+                            <div class="form-outline">
+                                <i class="fas fa-exclamation-circle trailing"></i>
+                                <input type="text" id="num_passenger" class="form-control form-icon-trailing" />
+                                <label class="form-label" for="num_passenger">No. Of Passenger</label>
+                            </div>
+
+                        </div>
+                        <div class="col">
+                            <div class="form-outline">
+                                <i class="fas fa-exclamation-circle trailing"></i>
+                                <input type="text" id="num_compartment" class="form-control form-icon-trailing" />
+                                <label class="form-label" for="num_passenger">Available Compartment&nbsp;<small style="font-style:italic">(by Space allocation)&nbsp;</small></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-outline">
+                                <textarea class="form-control" id="message" rows="4"></textarea>
+                                <label class="form-label" for="textAreaExample">Message to the Passenger &nbsp;<small style="font-style:italic">(Optional)</small>&nbsp;</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="addSchedule" type="button" class="btn btn-primary">Add Schedule</button>
+            </div>
+        </div>
+    </div>
+</div>
+

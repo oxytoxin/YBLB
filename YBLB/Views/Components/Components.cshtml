@@ -1,0 +1,552 @@
+﻿
+
+
+<h1>Components</h1>
+
+<!-- Tabs navs -->
+<ul class="nav nav-tabs nav-justified mb-3" id="ex1" role="tablist">
+    <li class="nav-item" role="presentation">
+        <a class="nav-link active"
+           id="ex3-tab-1"
+           data-mdb-toggle="tab"
+           href="#ex3-tabs-1"
+           role="tab"
+           aria-controls="ex3-tabs-1"
+           aria-selected="true"><i class="fas fa-solid fa-gears fa-fw me-3"></i><span>Unit</span></a>
+
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link"
+           id="ex3-tab-2"
+           data-mdb-toggle="tab"
+           href="#ex3-tabs-2"
+           role="tab"
+           aria-controls="ex3-tabs-2"
+           aria-selected="false"><i class="fas fa-solid fa-bus-simple fa-fw me-3"></i> <span>Terminal</span></a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link"
+           id="ex3-tab-3"
+           data-mdb-toggle="tab"
+           href="#ex3-tabs-3"
+           role="tab"
+           aria-controls="ex3-tabs-3"
+           aria-selected="false"><i class="fas fa-solid fa-coin-vertical fa-fw me-3"></i><span>Fare</span></a>
+    </li>
+
+    <li class="nav-item" role="presentation">
+        <a class="nav-link"
+           id="ex3-tab-4"
+           data-mdb-toggle="tab"
+           href="#ex3-tabs-4"
+           role="tab"
+           aria-controls="ex3-tabs-4"
+           aria-selected="false"><i class="fas fa-solid fa-gears fa-fw me-3"></i><span>System</span></a>
+    </li>
+
+</ul>
+<!-- Tabs navs -->
+<!-- Tabs content -->
+<div class="tab-content" id="ex2-content">
+    <div class="tab-pane fade show active"
+         id="ex3-tabs-1"
+         role="tabpanel"
+         aria-labelledby="ex3-tab-1">
+        <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#addUnit">
+            Add Unit
+        </button>
+
+        <!-- ADD UNIT -->
+        <div class="modal fade"
+             id="addUnit"
+             data-mdb-backdrop="static"
+             data-mdb-keyboard="false"
+             tabindex="-1"
+             aria-labelledby="staticBackdropLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel"><i class="fa-solid fa-plus"></i> Add Unit</h5>
+                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="form-outline mb-2">
+                                    <input type="text" id="plateNumtxt" class="form-control form-control-lg" style="text-transform: uppercase;" />
+                                    <label class="form-label" for="plateNumtxt">Plate # <small style="color:red;"><i class="fa-solid fa-circle-exclamation"></i></small></label>
+                                </div>
+
+                                <div class="form-outline">
+                                    <input type="number" id="unitNum" class="form-control form-control-lg" />
+                                    <label class="form-label" for="unitNum">Unit # <small style="color:red;"><i class="fa-solid fa-circle-exclamation"></i></small></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-mdb-dismiss="modal">Cancel</button>
+                        <button id="addUbus" type="button" class="btn btn-success">ADD</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container mt-3">
+            <table id="examples" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Plate</th>
+                        <th>Unit</th>
+                    </tr>
+                </thead>
+
+            </table>
+        </div>
+
+
+
+    </div>
+    <div class="tab-pane fade"
+         id="ex3-tabs-2"
+         role="tabpanel"
+         aria-labelledby="ex3-tab-2">
+        <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#addTerminal">Add Terminal</button>
+
+        <!-- ADD TERMINAL -->
+        <div class="modal fade"
+             id="addTerminal"
+             data-mdb-backdrop="static"
+             data-mdb-keyboard="false"
+             tabindex="-1"
+             aria-labelledby="staticBackdropLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel"><i class="fa-solid fa-plus"></i> Add Terminal</h5>
+                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="form-outline mb-3">
+                                    <input type="text" id="tCode" class="form-control form-control-lg" />
+                                    <label class="form-label" for="tCode">Terminal Code</label>
+                                </div>
+
+                                <div class="form-outline mb-3">
+                                    <input type="text" id="tName" class="form-control form-control-lg" />
+                                    <label class="form-label" for="tName">Terminal Name <small style="color:red;"><i class="fa-solid fa-circle-exclamation"></i></small></label>
+                                </div>
+
+                                <div class="form-outline mb-3">
+                                    <textarea class="form-control" id="tDesc" rows="4"></textarea>
+                                    <label class="form-label" for="tDesc">Description</label>
+                                </div>
+
+                                <div class="form-outline mb-3">
+                                    <input type="text" id="troute" class="form-control form-control-lg" />
+                                    <label class="form-label" for="tName">Route Code <small style="color:red;"><i class="fa-solid fa-circle-exclamation"></i></small></label>
+                                </div>
+
+                                @*<div class="form-outline mb-3">
+                                        <input type="text" id="tdistance" class="form-control form-control-lg" />
+                                        <label class="form-label" for="tName">Distance by KM <small style="color:red;"><i class="fa-solid fa-circle-exclamation"></i></small></label>
+                                    </div>*@
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-mdb-dismiss="modal">Cancel</button>
+                        <button type="button" id="addTerminals" class="btn btn-success">ADD</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mt-3">
+            <table id="tbl_terminals" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Terminal Code</th>
+                        <th>Terminal Name</th>
+                        <th>Description</th>
+                        <th>Route</th>
+                    </tr>
+                </thead>
+
+            </table>
+        </div>
+
+
+
+    </div>
+    <div class="tab-pane fade"
+         id="ex3-tabs-3"
+         role="tabpanel"
+         aria-labelledby="ex3-tab-3">
+        <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#setFare">Set Fare</button>
+
+        <!-- SET FARE -->
+        <div class="modal fade"
+             id="setFare"
+             data-mdb-backdrop="static"
+             data-mdb-keyboard="false"
+             tabindex="-1"
+             aria-labelledby="staticBackdropLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel"><i class="fa-solid fa-plus"></i> Add Terminal</h5>
+                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="">
+                            <div class="d-flex align-items-start bg-light mb-3" style="height: 100%; padding:10px;">
+                                <div class="col">
+                                    <div class="align-items-center">
+                                        <div class="mb-2">
+                                            <h5>Start point</h5>
+                                            <small> <i class="fa-solid fa-bus"></i>&nbsp;Terminal</small>
+                                        </div>
+                                        <select id="s_startpoint" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="text-lg-center">
+                                        <h1>
+                                            <i class="fa-solid fa-arrow-right-long"></i>
+                                        </h1>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="align-items-center">
+                                        <div class="mb-2">
+                                            <h5>End point</h5>
+                                            <small> <i class="fa-solid fa-city"></i>&nbsp;Destination</small>
+                                        </div>
+                                        <select id="s_endpoint" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="d-flex align-items-start bg-light mb-3" style="height: 100%; padding:10px;">
+                                    <div class="col" style="padding:5px;">
+                                        <div class="form-outline">
+                                            <input type="number" id="f_amount" class="form-control" aria-describedby="textExample1" />
+                                            <label class="form-label" for="f_amount">Terminal Fare <small>(₱)</small></label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col" style="padding:5px;">
+                                        <div class="form-outline">
+                                            <input type="number" id="f_compartment" class="form-control" aria-describedby="textExample1" />
+                                            <label class="form-label" for="f_compartment">Compartment Fare <small>(₱)</small></label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col" style="padding:5px;">
+                                        <div class="form-outline">
+                                            <input type="number" id="set_distance" class="form-control" aria-describedby="textExample1" />
+                                            <label class="form-label" for="set_distance">Distance<small>(set by KM)</small></label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <small class="text-danger">
+                                    Please Set the fare in Peso (₱) - ex. 145.50
+                                </small>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-mdb-dismiss="modal">Cancel</button>
+                        <button id="addFare" type="button" class="btn btn-success">ADD FARE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mt-3">
+            <table id="tbl_fare" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Terminal Code</th>
+                        <th>Start Point</th>
+                        <th>End Point</th>
+                        <th>Fare</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+            </table>
+        </div>
+
+
+    </div>
+
+
+    <div class="tab-pane fade"
+         id="ex3-tabs-4"
+         role="tabpanel"
+         aria-labelledby="ex3-tab-4">
+
+        <div style="padding:25px;">
+            <div class="row">
+                <div class="col-3">
+                    <!-- Tab navs -->
+                    <div class="nav flex-column nav-pills text-center"
+                         id="v-pills-tab"
+                         role="tablist"
+                         aria-orientation="vertical">
+                        <a class="nav-link active"
+                           id="v-pills-home-tab"
+                           data-mdb-toggle="pill"
+                           href="#v-pills-home"
+                           role="tab"
+                           aria-controls="v-pills-home"
+                           aria-selected="true">Bus Class</a>
+                     
+                        <a class="nav-link"
+                           id="v-pills-messages-tab"
+                           data-mdb-toggle="pill"
+                           href="#v-pills-messages"
+                           role="tab"
+                           aria-controls="v-pills-messages"
+                           aria-selected="false">User Level</a>
+                    </div>
+                    <!-- Tab navs -->
+                </div>
+
+                <div class="col-9">
+                    <!-- Tab content -->
+                    <div class="tab-content bg-light" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active"
+                             id="v-pills-home"
+                             role="tabpanel"
+                             aria-labelledby="v-pills-home-tab">
+
+
+                            <div style="padding:35px;">
+                                <h3>Bus Class</h3>
+                                <!-- Button trigger modal -->
+                                <div class="mb-3">
+                                    <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#addOptionBusClass">
+                                        Add Option
+                                    </button>
+                                </div>
+
+                                <div class="container mt-3">
+                                    <table id="tbl_bussclass" class="display" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Class Description</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+
+                                    </table>
+                                </div>
+
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="addOptionBusClass" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel"><i class="fa-solid fa-gears"></i> &nbsp; Adding Option(s)</h5>
+                                                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="form-outline">
+                                                    <i class="fas fa-exclamation-circle trailing"></i>
+                                                    <input type="text" id="i_busClass" class="form-control form-icon-trailing" />
+                                                    <label class="form-label" for="i_busClass">Buss Class</label>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button id="b_buss_class" type="button" class="btn btn-primary">Save</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="tab-pane fade"
+                             id="v-pills-messages"
+                             role="tabpanel"
+                             aria-labelledby="v-pills-messages-tab">
+                            <h5>User Level</h5>
+
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary disabled" data-mdb-toggle="modal" data-mdb-target="#staticBackdrop">
+                                Add User Level
+                            </button>
+
+
+                            <div class="mt-3 mb-3">
+                                <table id="tbl_userlvl" class="display" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Description</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+
+                                </table>
+                            </div>
+
+
+
+
+
+                            <!-- Modal -->
+                            <div class="modal fade"
+                                 id="staticBackdrop"
+                                 data-mdb-backdrop="static"
+                                 data-mdb-keyboard="false"
+                                 tabindex="-1"
+                                 aria-labelledby="staticBackdropLabel"
+                                 aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="staticBackdropLabel"><i class="fa-solid fa-plus"></i>&nbsp;Add User Level</h5>
+                                            <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="input-group form-outline mb-3">
+                                                <span class="input-group-text" id="basic-addon1">
+                                                    <i class="fa-solid fa-users"></i>
+                                                </span>
+                                                <div class="form-outline form-control">
+                                                    <input type="text" id="form12" class="form-control" />
+                                                    <label class="form-label" for="form12">User Level</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-success">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                    <!-- Tab content -->
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+<!-- Tabs content -->
+<!-- Modal -->
+<div class="modal fade" id="modalPop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="modalPop-dialog" class="modal-body bg-gradient text-white">
+                <h1 id="modalPop_msg"></h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade"
+     id="modal-update-ubussclass"
+     data-mdb-backdrop="static"
+     data-mdb-keyboard="false"
+     tabindex="-1"
+     aria-labelledby="staticBackdropLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Update Buss Class</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-outline">
+                    <input type="text" id="u-buss-class" class="form-control" />
+                    <label class="form-label" for="typeText">Buss Class</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="btn-u-bussclass">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade"
+     id="modal-update-fare-details"
+     data-mdb-backdrop="static"
+     data-mdb-keyboard="false"
+     tabindex="-1"
+     aria-labelledby="staticBackdropLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Update Fare</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <h4 id="tcodetxt"></h4>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-outline">
+                                <input type="number" id="f_Terminal" class="form-control" aria-describedby="textExample1" />
+                                <label class="form-label" for="f_Terminal">Terminal Fare <small>(₱)</small></label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-outline">
+                                <input type="number" id="f_compartments" class="form-control" aria-describedby="textExample1" />
+                                <label class="form-label" for="f_compartments">Compartment Fare <small>(₱)</small></label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-outline">
+                                <input type="number" id="f_Distance" class="form-control" aria-describedby="textExample1" />
+                                <label class="form-label" for="f_Distance">Distance by <small>KM</small></label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary btn-update-fare-submit">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>

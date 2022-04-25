@@ -1,0 +1,416 @@
+﻿@model YBLB.Models.Credentials.CredentialsMO
+
+<h1>User Management</h1>
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary mb-3" data-mdb-toggle="modal" data-mdb-target="#staticBackdrop">
+    Add Users
+</button>
+
+<div class="container">
+
+    <table id="tbl_userdetails" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>BD</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Userlvl</th>
+                <th>Username</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+    </table>
+
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade"
+     id="modal-update-users"
+     data-mdb-backdrop="static"
+     data-mdb-keyboard="false"
+     tabindex="-1"
+     aria-labelledby="staticBackdropLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Update Users</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-3">
+                            <!-- Tab navs -->
+                            <div class="nav flex-column nav-tabs text-center"
+                                 id="v-tabs-tab"
+                                 role="tablist"
+                                 aria-orientation="vertical">
+                                <a class="nav-link active"
+                                   id="v-tabs-home-tab"
+                                   data-mdb-toggle="tab"
+                                   href="#v-tabs-home"
+                                   role="tab"
+                                   aria-controls="v-tabs-home"
+                                   aria-selected="true">Profile Picture</a>
+                                <a class="nav-link"
+                                   id="v-tabs-profile-tab"
+                                   data-mdb-toggle="tab"
+                                   href="#v-tabs-profile"
+                                   role="tab"
+                                   aria-controls="v-tabs-profile"
+                                   aria-selected="false">Details</a>
+                                <a class="nav-link"
+                                   id="v-tabs-messages-tab"
+                                   data-mdb-toggle="tab"
+                                   href="#v-tabs-messages"
+                                   role="tab"
+                                   aria-controls="v-tabs-messages"
+                                   aria-selected="false">Credentials</a>
+                            </div>
+                            <!-- Tab navs -->
+                        </div>
+
+                        <div class="col-9">
+                            <!-- Tab content -->
+                            <div class="tab-content" id="v-tabs-tabContent">
+                                <div class="tab-pane fade show active"
+                                     id="v-tabs-home"
+                                     role="tabpanel"
+                                     aria-labelledby="v-tabs-home-tab">
+                                    @using (Html.BeginForm("UpdateDP", "Usermanagement", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                    {
+                                    <div>
+                                        <div style="display: none">
+                                            @Html.TextBoxFor(model => Model.I_USERID)
+                                        </div>
+                                        <center class="mb-3">
+                                            <div>
+                                                <img id="output2" class="img-thumbnail rounded-circle" style="max-width:300px; max-height:300px;" />
+                                            </div>
+                                        </center>
+
+
+
+                                        @Html.TextBox("file", "", new { type = "file", @class = "form-control", onchange = "loadFiles(event)" })
+                                        @*  <input type="file" accept="image/*" onchange="loadFile(event)" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Attache Img" />*@
+                                        <script>
+                                            var loadFiles = function (event) {
+
+                                                $('#but13').removeClass('disabled');
+
+                                                var output = document.getElementById('output2');
+                                                output.src = URL.createObjectURL(event.target.files[0]);
+                                                output.onload = function () {
+                                                    URL.revokeObjectURL(output.src);
+                                                }
+                                            };
+                                        </script>
+                                        <center class="mt-3">
+                                            <input id="but13" class="btn btn-primary disabled" type="submit" value="Update DP" />
+                                        </center>
+                                    
+                                    </div>
+                                    }
+                                </div>
+                                <div class="tab-pane fade"
+                                     id="v-tabs-profile"
+                                     role="tabpanel"
+                                     aria-labelledby="v-tabs-profile-tab">
+                                    
+                                    <div class="mt-2">
+                                        <div class="form-outline mb-3">
+                                            <input type="text" id="pName" class="form-control" disabled/>
+                                            <label class="form-label" for="pName">Name</label>
+                                        </div>
+
+                                        <div class="form-outline mb-3">
+                                            <input type="text" id="pGender" class="form-control" disabled/>
+                                            <label class="form-label" for="pGender">Gender</label>
+                                        </div>
+
+                                        <div class="form-outline mb-3">
+                                            <input type="text" id="pBd" class="form-control" disabled/>
+                                            <label class="form-label" for="pBd">Birth Date</label>
+                                        </div>
+
+                                        <div class="form-outline mb-3">
+                                            <input type="text" id="pAddress" class="form-control" />
+                                            <label class="form-label" for="pAddress">Address</label>
+                                        </div>
+
+                                        <div class="form-outline mb-3">
+                                            <input type="text" id="pEmail" class="form-control" />
+                                            <label class="form-label" for="pEmail">Email</label>
+                                        </div>  
+                                        
+                                        <div class="form-outline mb-3">
+                                            <input type="text" id="pUsername" class="form-control" />
+                                            <label class="form-label" for="pUsername">Username</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="mt-3">
+                                        <button id="btn-update-userdetails" type="button" class="btn btn-success float-end">Submit</button>
+                                    </div>
+
+                                </div>
+                                <div class="tab-pane fade"
+                                     id="v-tabs-messages"
+                                     role="tabpanel"
+                                     aria-labelledby="v-tabs-messages-tab">
+                                    <h5>User Credentials</h5>
+                                    <div class="form-outline mb-3">
+                                        <input type="password" id="passbase" class="form-control form-control-sm" />
+                                        <label class="form-label" for="form12">Password</label>
+                                    </div>
+
+                                    <div class="form-outline mb-3 conpass">
+                                        <input type="password" id="passConfirmBase" class="form-control form-control-sm" />
+                                        <label class="form-label" for="form12">Confirm Password</label>
+                                    </div>
+                                    <script>
+
+                                        var _passWordBase = "";
+                                        var _passWordConfirm = "";
+
+
+                                        $('#passbase').keyup((e) => {
+                                            _passWordBase = e.currentTarget.value;
+                                            if (_passWordBase === _passWordConfirm) {
+                                                $("#ic-txt").remove();
+                                                $('.conpass').append(`<i id="ic-txt" class="fa-solid fa-circle-check trailing text-success"></i>`);
+                                                $("#btn-update-creds").removeClass("disabled");
+                                                _passWord = e.currentTarget.value;
+                                                _isValidpassWord = true;
+                                            }
+                                            if (e.currentTarget.value !== _passWordConfirm) {
+                                                $("#ic-txt").remove();
+                                                $('.conpass').append(`<i id="ic-txt" class="fa-solid fa-circle-xmark trailing text-danger"></i>`);
+                                                $('#btn-update-creds').addClass('disabled');
+                                            }
+
+                                        });
+
+                                        $('#passbase').keydown((e) => {
+                                            _passWordBase = e.currentTarget.value;
+                                            if (_passWordBase === _passWordConfirm) {
+                                                $("#ic-txt").remove();
+                                                $('.conpass').append(`<i id="ic-txt" class="fa-solid fa-circle-check trailing text-success"></i>`);
+                                                $("#btn-update-creds").removeClass("disabled");
+                                                _passWord = e.currentTarget.value;
+                                                _isValidpassWord = true;
+                                            }
+                                            if (e.currentTarget.value !== _passWordConfirm) {
+                                                $("#ic-txt").remove();
+                                                $('.conpass').append(`<i id="ic-txt" class="fa-solid fa-circle-xmark trailing text-danger"></i>`);
+                                                $('#btn-update-creds').addClass('disabled');
+                                            }
+                                        });
+
+
+
+                                        $('#passConfirmBase').keyup((e) => {
+                                            _passWordConfirm = e.currentTarget.value;
+                                            if (_passWordBase === _passWordConfirm) {
+                                                $("#ic-txt").remove();
+                                                $('.conpass').append(`<i id="ic-txt" class="fa-solid fa-circle-check trailing text-success"></i>`);
+                                                $("#btn-update-creds").removeClass("disabled");
+                                                _passWord = e.currentTarget.value;
+                                                _isValidpassWord = true;
+                                            }
+                                            if (_passWordBase !== e.currentTarget.value) {
+                                                $("#ic-txt").remove();
+                                                $('.conpass').append(`<i id="ic-txt" class="fa-solid fa-circle-xmark trailing text-danger"></i>`);
+                                                $('#btn-update-creds').addClass('disabled');
+                                            }
+                                        });
+
+                                        $('#passConfirmBase').keydown((e) => {
+                                            _passWordConfirm = e.currentTarget.value;
+                                            if (_passWordBase === _passWordConfirm) {
+                                                $("#ic-txt").remove();
+                                                $('.conpass').append(`<i id="ic-txt" class="fa-solid fa-circle-check trailing text-success"></i>`);
+                                                $("#btn-update-creds").removeClass("disabled");
+                                                _passWord = e.currentTarget.value;
+                                                _isValidpassWord = true;
+                                            }
+                                            if (_passWordBase !== e.currentTarget.value) {
+                                                $("#ic-txt").remove();
+                                                $('.conpass').append(`<i id="ic-txt" class="fa-solid fa-circle-xmark trailing text-danger"></i>`);
+                                                $('#btn-update-creds').addClass('disabled');
+                                            }
+                                        });
+                                    </script>
+                                    <div class="mt-3">
+                                        <button id="btn-update-creds" type="button" class="btn btn-success float-end">Submit</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- Tab content -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade"
+     id="staticBackdrop"
+     data-mdb-backdrop="static"
+     data-mdb-keyboard="false"
+     tabindex="-1"
+     aria-labelledby="staticBackdropLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("UserManagement", "Usermanagement", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-4 mb-3">
+
+                                <img id="output" class="img-thumbnail" />
+
+                            </div>
+                            <div class="col">
+                                <div class="mb-3">
+                                    <small>User-Level</small>
+                                    @{
+                                        List<SelectListItem> itemsulvl = new List<SelectListItem>();
+                                        itemsulvl.Add(new SelectListItem { Text = "Select one", Value = "No User Level Selected!", Selected = true });
+                                        itemsulvl.Add(new SelectListItem { Text = "Conductor", Value = "2" });
+                                        itemsulvl.Add(new SelectListItem { Text = "Passenger", Value = "3" });
+                                    }
+                                    @Html.DropDownListFor(model => Model.I_USERLVLID, itemsulvl, new { @class = "form-control" })
+                                    @*<select id="" class="form-select" aria-label="Default select example" width="30%">
+                                            <option value="1"> Conductor </option>
+                                            <option value="2"> Passenger </option>
+                                        </select>*@
+                                </div>
+
+                                <div class="form-outline mb-3">
+                                    <i class="fas fa-exclamation-circle trailing"></i>
+                                    @*<input type="text" id="form1" class="form-control form-icon-trailing" />*@
+                                    @Html.TextBoxFor(model => Model.I_UCNAME, new { @class = "form-control form-icon-trailing" })
+                                    <label class="form-label" for="form1">Complete Name</label>
+                                </div>
+                                <div class="form-outline mb-3">
+                                    @*<input type="text" id="form12" class="form-control" />*@
+                                    @Html.TextBoxFor(model => Model.I_UADDRESS, new { @class = "form-control" })
+                                    <label class="form-label" for="form12">Address</label>
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    @Html.TextBox("file", "", new { type = "file", @class = "form-control", onchange = "loadFile(event)" })
+                                    @*  <input type="file" accept="image/*" onchange="loadFile(event)" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Attache Img" />*@
+                                    <script>
+                                        var loadFile = function (event) {
+                                            $('#but12').removeClass('disabled');
+                                            var output = document.getElementById('output');
+                                            output.src = URL.createObjectURL(event.target.files[0]);
+                                            output.onload = function () {
+                                                URL.revokeObjectURL(output.src);
+                                            }
+                                        };
+                                    </script>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="mb-3">
+                                    <small>Gender</small>
+                                    @{
+                                        List<SelectListItem> items = new List<SelectListItem>();
+                                        items.Add(new SelectListItem { Text = "Select one", Value = "No Gender Selected!", Selected = true });
+                                        items.Add(new SelectListItem { Text = "Male", Value = "Male" });
+                                        items.Add(new SelectListItem { Text = "Female", Value = "Female" });
+                                    }
+                                    @Html.DropDownListFor(model => Model.I_UGENDER, items, new { @class = "form-control" })
+                                 
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="mb-3">
+                                    <small class="form-helper">Birth Date</small>
+                                    @Html.TextBoxFor(model => Model.I_UBD, new { @class = "form-control" })
+                                    @*<input id="datepicker2" class="form-control" width="100%" />*@
+                                    <script>
+                                        $('#I_UBD').datepicker();
+                                        $("#I_UBD").next(".gj-icon").css("margin-top", "5px");
+                                        $("#I_UBD").next(".gj-icon").css("margin-right", "5px");
+                                    </script>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-4">
+                                <div style="margin-top:23px;">
+                                    <div class="form-outline mb-3">
+                                        @Html.TextBoxFor(model => Model.I_UEMAIL, new { @class = "form-control", type = "email" })
+                                        @*<input type="email" id="typeEmail" class="form-control" />*@
+                                        <label class="form-label" for="I_UEMAIL">Email Address</label>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-outline mb-3">
+                                    <i class="fas fa-exclamation-circle trailing"></i>
+                                    @Html.TextBoxFor(model => Model.I_USERNAME, new { @class = "form-control form-icon-trailing", type = "text" })
+                                    @*<input type="text" id="form1" class="form-control form-icon-trailing" />*@
+                                    <label class="form-label" for="form1">Username</label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-outline mb-3">
+                                    <i class="fas fa-exclamation-circle trailing"></i>
+                                    @Html.TextBoxFor(model => Model.I_PASWWORD, new { @class = "form-control form-icon-trailing", type = "password" })
+                                    @*<input type="password" id="pass" class="form-control form-icon-trailing" />*@
+                                    <label class="form-label" for="form1">Password</label>
+                                </div>
+                                <div id="textExample1" class="form-text">
+                                    <small>We'll never share your password with anyone else.</small>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+                        <input id="but12" class="btn btn-primary disabled" type="submit" value="Register" />
+
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
