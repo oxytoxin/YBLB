@@ -2165,6 +2165,7 @@
     <Content Include="Content\Gijgo\fonts\gijgo-material.ttf" />
     <Content Include="Content\Gijgo\fonts\gijgo-material.woff" />
     <Content Include="Content\ServerFolder\terms-and-conditions.pdf" />
+    <None Include="Properties\PublishProfiles\yblbookingsite - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2206,7 +2207,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="GcashPaymentAndOther\" />
     <Folder Include="Images\" />
-    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

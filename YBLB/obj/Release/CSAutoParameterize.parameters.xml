@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="con-Web.config Connection String" description="con Connection String used in web.config by the application to access the database." defaultValue="Server=yblt.mysql.database.azure.com;Database=ybldatabase;UserID=ybltadmin;Pwd=pKRcpvT8;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\Projects\\Dotnet\\YBL\\YBLB\\YBLB\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='con']/@connectionString" />
+  </parameter>
+</parameters>
